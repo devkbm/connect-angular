@@ -2,33 +2,28 @@ import { Injectable } from '@angular/core';
 import { User } from './user-info';
 import { HttpClient } from '@angular/common/http';
 
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/observable/throw';
+
 
 @Injectable()
 export class LoginService {
 
   private API_URI = 'http://localhost:8090/user/login';
 
-  public user: User;
-
   constructor(private http: HttpClient) {
-
   }
 
-  getLogin(id: string, pwd: string): Promise<User> {    
-    const url =`${this.API_URI}?id=${id}&pwd=${pwd}`;
+  getLogin(id: string, pwd: string): Observable<User> {
+    const url = `${this.API_URI}?id=${id}&pwd=${pwd}`;
     return this.http.get(url)
-      .toPromise()
-      .then(response => {
-        let res = response as User;        
-        console.log(this);
-        this.user = res;
+      .map((response: Response) => {
+        return response;
       })
-      .catch(this.handleError);
+      .catch((err) => Observable.throw(err));
   }
-
-  private handleError(error: any): Promise<any> {    
-    return Promise.reject(error.message || error);
-  }
-
 }

@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegistFormComponent } from './regist-form/regist-form.component';
 
-
 import { LoginService } from './login/login.service';
+import { AuthcheckRoutingService } from './login/authcheck-routing.service';
+
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { LoginService } from './login/login.service';
     RegistFormComponent
   ],
   providers: [
-    LoginService
+    LoginService,
+    AuthcheckRoutingService
   ]
 })
 export class UserModule { }

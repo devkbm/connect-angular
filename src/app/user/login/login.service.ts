@@ -9,21 +9,25 @@ export class LoginService {
 
   private API_URI = 'http://localhost:8090/user/login';
 
-  public users: User[];
+  public user: User;
 
   constructor(private http: HttpClient) {
 
   }
 
-  getLogin(id: string, pwd: string): Promise<User[]> {    
+  getLogin(id: string, pwd: string): Promise<User> {    
     const url =`${this.API_URI}?id=${id}&pwd=${pwd}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response as User[])
+      .then(response => {
+        let res = response as User;        
+        console.log(this);
+        this.user = res;
+      })
       .catch(this.handleError);
   }
 
-  private handleError(error: any): Promise<any> {
+  private handleError(error: any): Promise<any> {    
     return Promise.reject(error.message || error);
   }
 

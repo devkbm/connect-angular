@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-  <form class="login">
+  <form class="login" #form="ngForm" (ngSubmit)="validLogin()">
       <label class="title">
           <h3 class="welcome">Welcome to</h3>
           Company Product Name
@@ -13,14 +13,14 @@
               </select>
           </div>
           <input [(ngModel)]="userid" [ngModelOptions]="{standalone: true}" class="username" type="text"  id="login_username" placeholder="Username" required/>
-          <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="password" type="password"  id="login_password" placeholder="Password" required>
+          <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="password" type="password"  id="login_password" placeholder="Password" required/>
           <div class="checkbox">
               <input type="checkbox" id="rememberme">
               <label for="rememberme">
                   Remember me
               </label>
           </div>
-          <div class="error" [class.active]="!validLogin()">
+          <div class="error" [class.active]="!loginSuccess">
               Invalid user name or password
           </div>
           <button type="submit" class="btn btn-primary">NEXT</button>

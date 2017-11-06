@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 
-import { User } from './user-info';
+import { ResponseObject } from './response-object';
 
 @Component({
   selector: 'app-login',
@@ -13,26 +13,29 @@ export class LoginComponent implements OnInit {
   userid: string;
   password: string;
 
+  loginSuccess: boolean;
+  responseMessage: string;
+
   constructor(private loginService: LoginService) {
   }
 
   ngOnInit() {
-    this.loginService.getLogin('1', '1234').subscribe(
-      (model: User) => {
-        console.log(model.data);
+  }
+
+  private validLogin() {
+    this.loginService.getLogin(this.userid, this.password).subscribe(
+      (model: ResponseObject) => {
+        console.log(model);
+        this.loginSuccess = model.success;
+        this.responseMessage = model.message;
       },
       (err) => {
         console.log(err);
       },
       () => {
-        console.log('가져오기가 완료되었습니다.');
+        console.log(this.responseMessage);
       }
     );
-  }
-
-  private validLogin() {
-    // 로그인 체크
-    return false;
   }
 
 }

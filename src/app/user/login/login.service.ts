@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { User } from './user-info';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -9,6 +8,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/throw';
 
+import { ResponseObject } from './response-object';
 
 @Injectable()
 export class LoginService {
@@ -18,7 +18,7 @@ export class LoginService {
   constructor(private http: HttpClient) {
   }
 
-  getLogin(id: string, pwd: string): Observable<User> {
+  getLogin(id: string, pwd: string): Observable<ResponseObject> {
     const url = `${this.API_URI}?id=${id}&pwd=${pwd}`;
     return this.http.get(url)
       .map((response: Response) => {

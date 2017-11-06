@@ -1,6 +1,5 @@
 export class User {
-    total: number;
-    success: boolean;
-    masseage: string;
-    data: object;
+    name: string;
+    password: string;
+    username: string;
 }

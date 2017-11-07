@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './login.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
+import { LoginService } from './login.service';
 import { ResponseObject } from './response-object';
 
 @Component({
@@ -13,11 +14,13 @@ export class LoginComponent implements OnInit {
   userid: string;
   password: string;
 
-  loginSuccess: boolean;
+  loginSuccess: boolean = true;
   responseMessage: string;
 
-  constructor(private loginService: LoginService) {
-  }
+  constructor(
+    private loginService: LoginService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,9 +31,14 @@ export class LoginComponent implements OnInit {
         console.log(model);
         this.loginSuccess = model.success;
         this.responseMessage = model.message;
+        if (this.loginSuccess) {
+          this.router.navigate(['/home']);
+          localStorage.setItem('userId', this.userid);
+        }
       },
       (err) => {
         console.log(err);
+        localStorage.removeItem('userId');
       },
       () => {
         console.log(this.responseMessage);

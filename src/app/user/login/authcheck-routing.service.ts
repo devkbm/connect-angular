@@ -10,7 +10,7 @@ export class AuthcheckRoutingService implements CanActivate {
     // { path: '', component: comp, canActivate: [AuthcheckRoutingService] }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if ( localStorage.getItem('userId')) {
+        if ( sessionStorage.getItem('userId')) {
             // logged in so return true
             return true;
         }

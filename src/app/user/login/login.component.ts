@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
         this.loginSuccess = model.success;
         this.responseMessage = model.message;
         if (this.loginSuccess) {
-          this.router.navigate(['/home']);
-          localStorage.setItem('userId', this.userid);
+          this.router.navigate(['/home']);                   
+          sessionStorage.setItem('userId', this.userid);
         }
       },
       (err) => {
         console.log(err);
-        localStorage.removeItem('userId');
+        sessionStorage.removeItem('userId');
       },
       () => {
         console.log(this.responseMessage);

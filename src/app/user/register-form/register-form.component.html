@@ -1,0 +1,39 @@
+<form>
+    <section class="form-block">
+        <label>사용자 등록</label>      
+        <div class="form-group" >
+            <label for="user_id" aria-haspopup="true" role="tooltip" class="tooltip tooltip-sm invalid required" >
+                아이디
+                <span class="tooltip-content">
+                    This field cannot be empty!
+                </span>
+            </label>
+            <input type="text" id="user_id" placeholder="아이디를 입력해주세요." size="40" required>
+        </div>
+        <div class="form-group">
+            <label for="pwd" class="required">비밀번호</label>
+            <input type="password" id="pwd" placeholder="비밀번호를 입력해주세요." size="35">
+        </div>
+        <div class="form-group">
+            <label for="confirm_pwd" class="required">비밀번호 확인</label>
+            <input type="password" id="confirm_pwd" placeholder="비밀번호를 입력해주세요." size="35">
+        </div>
+        <div class="form-group">
+            <label for="aForm_3">A select box</label>
+            <div class="select">
+                <select id="aForm_3">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                    <option>Option 4</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cmt">비고</label>
+            <textarea id="cmt" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">등록</button>
+        <button type="submit" class="btn btn-primary">취소</button>
+    </section>
+</form>

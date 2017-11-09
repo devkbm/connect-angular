@@ -17,7 +17,12 @@ export class LoginService {
 
   constructor(private http: HttpClient) {
   }
-
+  /**
+   * @description 로그인 한다.
+   * @paramTag 사용자 아이디 
+   * @paramTag 비밀번호 
+   * @returnType {ResponseObject} 유저정보
+   */
   getLogin(id: string, pwd: string): Observable<ResponseObject> {
     const url = `${this.API_URI}?id=${id}&pwd=${pwd}`;
     return this.http.get(url)

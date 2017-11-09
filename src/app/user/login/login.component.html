@@ -11,35 +11,45 @@
                     <option>Local Users</option>
                     <option>Administrator</option>
                 </select>
-            </div>                      
-            <label for="login_username" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm invalid">
-                <input  [(ngModel)]="userid" 
-                        [ngModelOptions]="{standalone: true}" 
-                        id="login_username" 
+            </div>                         
+            <label for="login_username" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="userid_empty">
+                <input  name="login_username" 
                         type="text" 
+                        #user_id                        
+                        [(ngModel)]="userid" 
+                        [ngModelOptions]="{standalone: true}"                         
                         class="username" 
-                        placeholder="사용자 ID를 입력해주세요." required/>
+                        placeholder="사용자 ID를 입력해주세요." 
+                        (keyup)="checkEmptyField('userid')"
+                        required/>
                 <span class="tooltip-content">
                     This field cannot be empty!
                 </span>
             </label>  
-            <label for="login_password" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm invalid">
-                <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="password" type="password"  id="login_password" placeholder="비밀번호를 입력해주세요." required/>
+            <label for="login_password" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="password_empty">
+                <input  name="login_password"
+                        type="password" 
+                        [(ngModel)]="password" 
+                        [ngModelOptions]="{standalone: true}" 
+                        class="password"    
+                        placeholder="비밀번호를 입력해주세요." 
+                        (keyup)="checkEmptyField('password')"
+                        required/>
                 <span class="tooltip-content">
                     This field cannot be empty!
                 </span>
-            </label>
-            <div class="checkbox">
-                <input type="checkbox" id="rememberme">
-                <label for="rememberme">
-                    Remember me
-                </label>
-            </div>
+            </label>            
+            <clr-checkbox
+                    name="rememberme"                    
+                    [(ngModel)]="rememberme">
+                Remember me
+            </clr-checkbox>
+
             <div class="error" [class.active]="!loginSuccess">
                 Invalid user name or password
             </div>
             <button type="submit" class="btn btn-primary">NEXT</button>
             <a href="javascript://" class="signup">Sign up for a Company ID</a>
         </div>
-    </form>
+    </form>         
 </div>

@@ -1,8 +1,8 @@
 import { User } from './user-info';
 
-export class ResponseObject {
+export class ResponseObject<T> {
     total: number;
     success: boolean;
     message: string;
-    data: User;
+    data: T;
 }

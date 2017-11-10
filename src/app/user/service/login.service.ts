@@ -8,7 +8,8 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/throw';
 
-import { ResponseObject } from './response-object';
+import { ResponseObject } from '../model/response-object';
+import { User } from '../model/user-info';
 
 @Injectable()
 export class LoginService {
@@ -23,7 +24,7 @@ export class LoginService {
    * @paramTag 비밀번호 
    * @returnType {ResponseObject} 유저정보
    */
-  getLogin(id: string, pwd: string): Observable<ResponseObject> {
+  getLogin(id: string, pwd: string): Observable<ResponseObject<User>> {
     const url = `${this.API_URI}?id=${id}&pwd=${pwd}`;
     return this.http.get(url)
       .map((response: Response) => {

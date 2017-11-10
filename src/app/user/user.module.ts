@@ -6,7 +6,7 @@ import { ClarityModule } from '../../../node_modules/clarity-angular';
 import { LoginComponent } from './login/login.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 
-import { LoginService } from './login/login.service';
+import { LoginService } from './service/login.service';
 import { AuthcheckRoutingService } from './login/authcheck-routing.service';
 
 

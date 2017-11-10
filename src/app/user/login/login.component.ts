@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { LoginService } from './login.service';
-import { ResponseObject } from './response-object';
+import { LoginService } from '../service/login.service';
+
+import { ResponseObject } from '../model/response-object';
+import { User } from '../model/user-info';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +43,7 @@ export class LoginComponent implements OnInit {
       return;
 
     this.loginService.getLogin(this.userid, this.password).subscribe(
-      (model: ResponseObject) => {
+      (model: ResponseObject<User>) => {
         console.log(model);
         this.loginSuccess = model.success;
         this.responseMessage = model.message;

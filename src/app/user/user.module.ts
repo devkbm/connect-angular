@@ -8,6 +8,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 
 import { LoginService } from './service/login.service';
 import { AuthcheckRoutingService } from './login/authcheck-routing.service';
+import { UserService } from './service/user.service';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AuthcheckRoutingService } from './login/authcheck-routing.service';
   ],
   providers: [
     LoginService,
+    UserService,
     AuthcheckRoutingService
   ]
 })

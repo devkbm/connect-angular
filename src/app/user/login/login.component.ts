@@ -13,24 +13,24 @@ import { User } from '../model/user-info';
 })
 export class LoginComponent implements OnInit {
 
-  userid: string = "";
-  password: string = "";
-  rememberme: boolean = false;  
+  userid = '';
+  password = '';
+  rememberme = false;
 
-  loginSuccess: boolean = true;
+  loginSuccess = true;
   responseMessage: string;
-  
-  userid_empty: boolean = false;
-  password_empty: boolean = false;
+
+  userid_empty = false;
+  password_empty = false;
 
   constructor(
     private loginService: LoginService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }    
+  ) { }
 
   ngOnInit() {
-    let rememberid = localStorage.getItem("rememberUserId");
+    const rememberid = localStorage.getItem('rememberUserId');
 
     if (rememberid) {
       this.userid = rememberid;
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   private validLogin() {
-    if (this.checkEmptyField("all") == false )
+    if (this.checkEmptyField('all') === false )
       return;
 
     this.loginService.getLogin(this.userid, this.password).subscribe(
@@ -48,39 +48,39 @@ export class LoginComponent implements OnInit {
         this.loginSuccess = model.success;
         this.responseMessage = model.message;
         if (this.loginSuccess) {
-          sessionStorage.setItem("userId", this.userid);
+          sessionStorage.setItem('userId', this.userid);
 
           if (this.rememberme)
-            localStorage.setItem("rememberUserId", this.userid);
-          else 
-            localStorage.removeItem("rememberUserId");
+            localStorage.setItem('rememberUserId', this.userid);
+          else
+            localStorage.removeItem('rememberUserId');
 
-          this.router.navigate(['/home']);                    
+          this.router.navigate(['/home']);
         }
       },
       (err) => {
         console.log(err);
-        sessionStorage.removeItem("userId");
-        localStorage.removeItem("rememberUserId");
+        sessionStorage.removeItem('userId');
+        localStorage.removeItem('rememberUserId');
       },
       () => {
         console.log(this.responseMessage);
       }
     );
   }
-    
-  private checkEmptyField(field: string): boolean {    
+
+  private checkEmptyField(field: string): boolean {
     let rtn = true;
 
-    if (field == "userid") 
-      this.userid == "" ? this.userid_empty = true : this.userid_empty = false;
-    
-    if (field == "password")
-      this.password == "" ? this.password_empty = true : this.password_empty = false;    
+    if (field === 'userid')
+      this.userid === '' ? this.userid_empty = true : this.userid_empty = false;
 
-    if (field == "all") {
-      this.userid == "" ? this.userid_empty = true : this.userid_empty = false;
-      this.password == "" ? this.password_empty = true : this.password_empty = false;
+    if (field === 'password')
+      this.password === '' ? this.password_empty = true : this.password_empty = false;
+
+    if (field === 'all') {
+      this.userid === '' ? this.userid_empty = true : this.userid_empty = false;
+      this.password === '' ? this.password_empty = true : this.password_empty = false;
     }
 
     if ( this.userid_empty || this.password_empty )

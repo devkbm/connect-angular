@@ -1,22 +1,37 @@
 <form (ngSubmit)="registerUser()">
+    {{user | json}}
     <section class="form-block">
         <label>사용자 등록</label>      
         <div class="form-group" >
-            <label for="user_id" aria-haspopup="true" role="tooltip" class="tooltip tooltip-sm invalid required" >
+            <label for="user_id" aria-haspopup="true" role="tooltip" class="tooltip tooltip-sm invalid required">
                 아이디
                 <span class="tooltip-content">
                     This field cannot be empty!
                 </span>
             </label>
-            <input type="text" id="user_id" placeholder="아이디를 입력해주세요." size="40" required>
+            <input  [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}"
+                    type="text" 
+                    id="user_id" 
+                    placeholder="아이디를 입력해주세요." 
+                    size="20" 
+                    required 
+                    >
         </div>
         <div class="form-group">
             <label for="pwd" class="required">비밀번호</label>
-            <input type="password" id="pwd" placeholder="비밀번호를 입력해주세요." size="35">
+            <input  [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"
+                    type="password" 
+                    id="pwd" 
+                    placeholder="비밀번호를 입력해주세요." 
+                    size="20" 
+                    >
         </div>
         <div class="form-group">
             <label for="confirm_pwd" class="required">비밀번호 확인</label>
-            <input type="password" id="confirm_pwd" placeholder="비밀번호를 입력해주세요." size="35">
+            <input  type="password" 
+                    id="confirm_pwd" 
+                    placeholder="비밀번호를 입력해주세요." 
+                    size="20">
         </div>
         <div class="form-group">
             <label for="aForm_3">A select box</label>

@@ -10,14 +10,15 @@ import { User } from '../model/user-info';
 })
 export class RegisterFormComponent implements OnInit {
 
-  model: User;
+  private user: User;
 
   constructor(private userService: UserService ) { }
 
   ngOnInit() {
+    this.user = new User();
   }
 
   private registerUser() {
-    this.userService.registerUser(this.model);
+    this.userService.registerUser(this.user);        
   }
 }

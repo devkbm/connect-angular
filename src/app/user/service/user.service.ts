@@ -18,7 +18,7 @@ export class UserService {
 
     registerUser(user: User) {
         return this.http
-          .post('http://localhost:8090/user/login', user)
+          .post('http://localhost:8090/user', user)
           .subscribe(
             (res) => {
               console.log(res);

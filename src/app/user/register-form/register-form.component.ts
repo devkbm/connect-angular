@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 
+import { ResponseObject } from '../model/response-object';
 import { User } from '../model/user-info';
 
 @Component({
@@ -19,10 +20,34 @@ export class RegisterFormComponent implements OnInit {
   }
 
   private registerUser() {
-    this.userService.registerUser(this.user);
+    this.userService
+      .registerUser(this.user)
+      .subscribe(
+        (model: ResponseObject<User>) => {
+          console.log(model);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          console.log('완료');
+        }
+      );
   }
 
   private deleteUser() {
-    this.userService.deleteUser(this.user);
+    this.userService
+      .deleteUser(this.user)
+      .subscribe(
+        (model: ResponseObject<User>) => {
+          console.log(model);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          console.log('완료');
+        }
+      );
   }
 }

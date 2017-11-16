@@ -19,33 +19,21 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(user: User) {
+  registerUser(user: User): Observable<ResponseObject<User>> {
     return this.http
       .post(this.API_URI, user)
-      .subscribe(
-        (res) => {
-          console.log(res);
-        },
-        err => {
-          console.log(err);
-        },
-        () => {
-          console.log('completed');
-      });
+      .map((res: Response) => {
+        return res;
+      })
+      .catch((err) => Observable.throw(err));
   }
 
-  deleteUser(user: User) {
+  deleteUser(user: User): Observable<ResponseObject<User>> {
     return this.http
     .delete(this.API_URI + '/' + user.userId)
-    .subscribe(
-      (res) => {
-        console.log(res);
-      },
-      err => {
-        console.log(err);
-      },
-      () => {
-        console.log('completed');
-      });
+    .map((res: Response) => {
+      return res;
+    })
+    .catch((err) => Observable.throw(err));
   }
 }

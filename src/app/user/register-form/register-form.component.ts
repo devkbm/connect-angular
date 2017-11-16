@@ -19,6 +19,10 @@ export class RegisterFormComponent implements OnInit {
   }
 
   private registerUser() {
-    this.userService.registerUser(this.user);        
+    this.userService.registerUser(this.user);
+  }
+
+  private deleteUser() {
+    this.userService.deleteUser(this.user);
   }
 }

@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private validLogin() {
+  private validLogin() {    
     if (this.checkEmptyField('all') === false )
       return;
 

@@ -10,25 +10,42 @@ import 'rxjs/add/observable/throw';
 
 import { ResponseObject } from '../model/response-object';
 import { User } from '../model/user-info';
+import { HttpParams } from '@angular/common/http/src/params';
 
 @Injectable()
 export class UserService {
 
-    constructor(private http: HttpClient) { }
+  private API_URI = 'http://localhost:8090/user';
 
-    registerUser(user: User) {
-        return this.http
-          .post('http://localhost:8090/user', user)
-          .subscribe(
-            (res) => {
-              console.log(res);
-            },
-           err => {
-              console.log(err);
-           },
-           () => {
-              console.log('completed');
-           });
-      }
+  constructor(private http: HttpClient) { }
 
+  registerUser(user: User) {
+    return this.http
+      .post(this.API_URI, user)
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        },
+        () => {
+          console.log('completed');
+      });
+  }
+
+  deleteUser(user: User) {
+    return this.http
+    .delete(this.API_URI + '/' + user.userId)
+    .subscribe(
+      (res) => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      },
+      () => {
+        console.log('completed');
+      });
+  }
 }

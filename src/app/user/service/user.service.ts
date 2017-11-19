@@ -19,6 +19,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  checkUser(id: string): Observable<ResponseObject<User>> {
+    const url = `${this.API_URI}/check/${id}`;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response;
+      })
+      .catch((err) => Observable.throw(err));
+  }
+
   registerUser(user: User): Observable<ResponseObject<User>> {
     return this.http
       .post(this.API_URI, user)

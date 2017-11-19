@@ -50,4 +50,20 @@ export class RegisterFormComponent implements OnInit {
         }
       );
   }
+
+  private checkUser() {
+    this.userService
+      .checkUser(this.user.userId)
+      .subscribe(
+        (model: ResponseObject<User>) => {
+          console.log(model);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          console.log('완료');
+        }
+      );
+  }
 }

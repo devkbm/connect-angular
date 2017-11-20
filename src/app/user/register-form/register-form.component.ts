@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 import { UserService } from '../service/user.service';
 
 import { ResponseObject } from '../model/response-object';
 import { User } from '../model/user-info';
+
 
 @Component({
   selector: 'app-register-form',
@@ -12,6 +14,8 @@ import { User } from '../model/user-info';
 export class RegisterFormComponent implements OnInit {
 
   private user: User;
+
+  @Output() messageChanged: EventEmitter<string> = new EventEmitter();
 
   constructor(private userService: UserService ) { }
 
@@ -52,11 +56,13 @@ export class RegisterFormComponent implements OnInit {
   }
 
   private checkUser() {
+    this.messageChanged.emit('test');
     this.userService
       .checkUser(this.user.userId)
       .subscribe(
         (model: ResponseObject<User>) => {
           console.log(model);
+          this.messageChanged.emit(model.message);
         },
         (err) => {
           console.log(err);

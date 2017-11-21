@@ -1,8 +1,9 @@
+{{message}}
 <div class="main-container">
   <clr-alert [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
       <clr-alert-item>
           <span class="alert-text">
-              This is an app level alert.
+            {{message}}
           </span>
           <div class="alert-actions">
               <button class="btn alert-action">Fix</button>

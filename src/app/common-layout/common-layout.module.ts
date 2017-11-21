@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClarityModule } from "clarity-angular";
+import { ClarityModule } from 'clarity-angular';
 
 import { CommonLayoutRoutingModule } from './common-layout-routing.module';
 import { CommonLayoutComponent } from './common-layout.component';

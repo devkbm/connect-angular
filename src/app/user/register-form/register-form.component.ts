@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { UserService } from '../service/user.service';
+import { AppAlarmService } from '../../common-layout/app-alarm.service';
 
 import { ResponseObject } from '../model/response-object';
 import { User } from '../model/user-info';
@@ -17,7 +18,8 @@ export class RegisterFormComponent implements OnInit {
 
   @Output() messageChanged: EventEmitter<string> = new EventEmitter();
 
-  constructor(private userService: UserService ) { }
+  constructor(private userService: UserService,
+              private appAlarmService: AppAlarmService) { }
 
   ngOnInit() {
     this.user = new User();
@@ -62,7 +64,7 @@ export class RegisterFormComponent implements OnInit {
       .subscribe(
         (model: ResponseObject<User>) => {
           console.log(model);
-          this.messageChanged.emit(model.message);
+          this.appAlarmService.changeMessage(model.message);
         },
         (err) => {
           console.log(err);

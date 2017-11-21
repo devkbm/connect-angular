@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppAlarmService } from './app-alarm.service';
 
 @Component({
   selector: 'app-common-layout',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommonLayoutComponent implements OnInit {
 
-  constructor() { }
+  message: string;
+
+  constructor(private data: AppAlarmService) { }
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message);
   }
 
 }

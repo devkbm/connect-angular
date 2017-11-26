@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { AppAlarmService } from '../../common-layout/app-alarm.service';
 
-import { ResponseObject } from '../model/response-object';
+import { ResponseObject } from '../../common-layout/model/response-object';
 import { User } from '../model/user-info';
 
 

@@ -8,9 +8,8 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/throw';
 
-import { ResponseObject } from '../model/response-object';
+import { ResponseObject } from '../../common-layout/model/response-object';
 import { User } from '../model/user-info';
-import { HttpParams } from '@angular/common/http/src/params';
 
 @Injectable()
 export class LoginService {

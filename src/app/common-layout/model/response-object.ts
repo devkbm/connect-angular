@@ -1,5 +1,3 @@
-import { User } from './user-info';
-
 export class ResponseObject<T> {
     total: number;
     success: boolean;

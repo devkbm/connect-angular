@@ -20,11 +20,14 @@ export class BoardComponent implements OnInit {
     this.board = new Board();
   }
 
-  getBoard(id: string) {
-    this.boardService.getBoard(id)
+  getBoard(id: number) {
+    this.boardService.getBoard(this.board.pkBoard)
       .subscribe(        
         (model: ResponseObject<Board>)=>{
-          this.board = model.data;
+          if (model.data) 
+            this.board = model.data;
+          else 
+            this.board = new Board();
         },
         (err)=>{},
         ()=>{}

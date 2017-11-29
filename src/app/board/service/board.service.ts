@@ -18,7 +18,7 @@ export class BoardService {
     
     constructor(private http: HttpClient) { }
 
-    getBoard(id: string): Observable<ResponseObject<Board>> {
+    getBoard(id: number): Observable<ResponseObject<Board>> {
         const url = `${this.API_URI}/boards/${id}`;
         return this.http.get(url)
             .map((response: Response) => {
@@ -29,8 +29,10 @@ export class BoardService {
     
 
     saveBoard(board: Board): Observable<ResponseObject<Board>> {
+        const url = `${this.API_URI}/boards/${board.pkBoard}`;
+
         return this.http
-            .post(this.API_URI, board)
+            .post(url, board)
             .map((res: Response) => {
                 return res;
             })
@@ -38,8 +40,10 @@ export class BoardService {
     }
 
     deleteBoard(board: Board): Observable<ResponseObject<Board>> {
+        const url = `${this.API_URI}/boards/${board.pkBoard}`;
+
         return this.http
-            .delete(this.API_URI + '/' + board.pkBoard)
+            .delete(url)
             .map((res: Response) => {
                 return res;
             })

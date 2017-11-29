@@ -1,9 +1,10 @@
 <form>  
+    {{board | json}}
     <section class="form-block">
         <label>게시판 등록</label>
-        <input type="hidden" name="pkBoard">
-        <input type="hidden" name="ppkBoard">          
-
+        <input type="text" name="pkBoard" [(ngModel)]="board.pkBoard">
+        <input type="hidden" name="ppkBoard" [(ngModel)]="board.ppkBoard">          
+        
         <div class="form-group" >            
             <label for="board_name" class="required">게시판 명칭</label>
             <label for="board_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="boardNm.invalid && (boardNm.dirty || boardNm.touched)">                
@@ -84,7 +85,8 @@
             <label for="cmt">비고</label>
             <textarea id="cmt" rows="5"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="registerUser()">등록</button>
-        <button class="btn btn-primary" (click)="deleteUser()">삭제</button>
+        <button class="btn btn-primary" (click)="getBoard()">조회</button>
+        <button class="btn btn-primary" (click)="saveBoard()">등록</button>
+        <button class="btn btn-primary" (click)="deleteBoard()">삭제</button>        
   </section>
 </form>

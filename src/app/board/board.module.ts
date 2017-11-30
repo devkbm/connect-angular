@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '../../../node_modules/clarity-angular';
 
-import { BoardComponent } from './board.component';
+import { BoardComponent } from './component/board.component';
+import { BoardGridComponent } from './component/board-grid.component';
 
 import { BoardService } from './service/board.service';
+
 
 @NgModule({
   imports: [
@@ -13,7 +15,10 @@ import { BoardService } from './service/board.service';
     FormsModule,
     ClarityModule
   ],
-  declarations: [BoardComponent],
+  declarations: [
+    BoardComponent,
+    BoardGridComponent
+  ],
   providers: [
     BoardService
   ],

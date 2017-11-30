@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BoardService } from './service/board.service';
+import { BoardService } from '.././service/board.service';
 
-import { ResponseObject } from '../common-layout/model/response-object';
-import { Board } from './model/board';
+import { ResponseObject } from '../../common-layout/model/response-object';
+import { Board } from '.././model/board';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styles: ['']
 })
 export class BoardComponent implements OnInit {
 

@@ -15,9 +15,9 @@
       </ng-container>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'boardNm'">게시판명</clr-dg-column>
-  <clr-dg-column [clrDgField]="'boardType'">게시판 타입</clr-dg-column>
-  <clr-dg-column [clrDgField]="'fromDt'">시작일자</clr-dg-column>
-  <clr-dg-column [clrDgField]="'toDt'">종료일자</clr-dg-column>
+  <clr-dg-column [clrDgField]="'boardType'" [style.width.px]="100">타입</clr-dg-column>
+  <clr-dg-column [clrDgField]="'fromDt'"    [style.width.px]="130">시작일자</clr-dg-column>
+  <clr-dg-column [clrDgField]="'toDt'"      [style.width.px]="130">종료일자</clr-dg-column>
   
   <clr-dg-row *clrDgItems="let board of boardList" [clrDgItem]="board">
       <clr-dg-cell>{{board.pkBoard}}</clr-dg-cell>

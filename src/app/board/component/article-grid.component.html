@@ -1,3 +1,28 @@
-<p>
-  article-grid works!
-</p>
+<clr-datagrid [(clrDgSingleSelected)]="selectedArticle" [clDgRowSelection]="true">
+  <clr-dg-action-bar>
+      Selected Board: <span class="username" *ngIf="selectedArticle">{{selectedArticle.boardNm}}</span>
+      <button class="btn btn-sm btn-secondary" (click)="getArticleList()">조회</button>      
+  </clr-dg-action-bar>
+  
+  <clr-dg-column [clrDgField]="'pkArticle'">
+      <ng-container *clrDgHideableColumn="{hidden:true}">
+          게시글 키
+      </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'title'">게시글</clr-dg-column>  
+  <clr-dg-column [clrDgField]="'fromDt'"    [style.width.px]="130">시작일자</clr-dg-column>
+  <clr-dg-column [clrDgField]="'toDt'"      [style.width.px]="130">종료일자</clr-dg-column>
+  
+  <clr-dg-row *clrDgItems="let article of articleList" [clrDgItem]="article">
+      <clr-dg-cell>{{article.pkArticle}}</clr-dg-cell>
+      <clr-dg-cell>{{article.title}}</clr-dg-cell>      
+      <clr-dg-cell>{{article.fromDt | date}}</clr-dg-cell>
+      <clr-dg-cell>{{article.toDt | date}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} boards
+      <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>              
+  </clr-dg-footer>      
+</clr-datagrid>

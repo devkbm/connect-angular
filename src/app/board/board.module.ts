@@ -5,6 +5,7 @@ import { ClarityModule } from '../../../node_modules/clarity-angular';
 
 import { BoardComponent } from './component/board.component';
 import { BoardGridComponent } from './component/board-grid.component';
+import { ArticleGridComponent } from './component/article-grid.component';
 
 import { BoardService } from './service/board.service';
 
@@ -17,7 +18,8 @@ import { BoardService } from './service/board.service';
   ],
   declarations: [
     BoardComponent,
-    BoardGridComponent
+    BoardGridComponent,
+    ArticleGridComponent
   ],
   providers: [
     BoardService

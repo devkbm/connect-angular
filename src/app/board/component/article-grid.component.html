@@ -1,7 +1,7 @@
 <clr-datagrid [(clrDgSingleSelected)]="selectedArticle" [clDgRowSelection]="true">
   <clr-dg-action-bar>
       Selected Board: <span class="username" *ngIf="selectedArticle">{{selectedArticle.boardNm}}</span>
-      <button class="btn btn-sm btn-secondary" (click)="getArticleList()">조회</button>      
+      <button class="btn btn-sm btn-secondary" (click)="getArticleList('22')">조회</button>      
   </clr-dg-action-bar>
   
   <clr-dg-column [clrDgField]="'pkArticle'">

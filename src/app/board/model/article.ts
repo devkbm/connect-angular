@@ -6,7 +6,7 @@ export class Article {
     pwd: string;
     hitCnt: string;
     fromdDt: string;
-    toDt: string;    
+    toDt: string;
     seq: number;
-    depth: number;    
+    depth: number;
 }

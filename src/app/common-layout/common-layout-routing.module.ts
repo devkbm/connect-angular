@@ -7,6 +7,7 @@ import { Test2Component } from '../test/test2/test2.component';
 import { RegisterFormComponent } from '../user/register-form/register-form.component';
 import { BoardComponent } from '../board/component/board.component';
 import { BoardGridComponent } from '../board/component/board-grid.component';
+import { ArticleGridComponent } from '../board/component/article-grid.component';
 
 const layoutroutes: Routes = [
   {
@@ -16,7 +17,8 @@ const layoutroutes: Routes = [
       {path: 'test2', component: Test2Component},
       {path: 'regform', component: RegisterFormComponent},
       {path: 'board', component: BoardComponent},
-      {path: 'boardList', component: BoardGridComponent}
+      {path: 'boardList', component: BoardGridComponent},
+      {path: 'articleList', component: ArticleGridComponent}
     ]
   }
 ];

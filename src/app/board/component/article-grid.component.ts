@@ -19,15 +19,16 @@ export class ArticleGridComponent implements OnInit {
   ngOnInit() {
   }
 
-  getBoardList() {
-    this.boardService.getArticleList('33')
-      .subscribe(                
-        (model: ResponseList<Article>)=>{
-          if (model.data) 
-            this.articleList = model.data;          
+  getArticleList() {
+    this.boardService.getArticleList('17')
+      .subscribe(
+        (model: ResponseList<Article>) => {
+          if (model.data) {
+            this.articleList = model.data;
+          }
         },
-        (err)=>{},
-        ()=>{}
+        (err) => {},
+        () => {}
     );
   }
 

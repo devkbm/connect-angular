@@ -60,7 +60,7 @@ export class BoardService {
             .catch((err) => Observable.throw(err));
     }
 
-    getArticleList(fkBoard: string, title?: string, contents?: string): Observable<ResponseList<Board>> {
+    getArticleList(fkBoard: string, title?: string, contents?: string): Observable<ResponseList<Article>> {
         let url = `${this.API_URI}/boards/articles?fkBoard=${fkBoard}`;
 
         if ( title !== '' ) {

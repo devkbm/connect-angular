@@ -12,6 +12,8 @@ import { Article } from '.././model/article';
 })
 export class ArticleGridComponent implements OnInit {
 
+  searchTitle: string;
+
   articleList: Article[];
 
   constructor(private boardService: BoardService) { }
@@ -19,8 +21,9 @@ export class ArticleGridComponent implements OnInit {
   ngOnInit() {
   }
 
-  getArticleList() {
-    this.boardService.getArticleList('17')
+  getArticleList(fkBoard: string) {
+    
+    this.boardService.getArticleList(fkBoard)
       .subscribe(
         (model: ResponseList<Article>) => {
           if (model.data) {

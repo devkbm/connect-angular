@@ -61,7 +61,7 @@ export class BoardService {
     }
 
     getArticleList(fkBoard: string, title?: string, contents?: string): Observable<ResponseList<Article>> {
-        let url = `${this.API_URI}/boards/articles?fkBoard=${fkBoard}`;
+        let url = `${this.API_URI}/boards/${fkBoard}/articles`;
 
         if ( title !== undefined ) {
             url = url + '&title=' + title;

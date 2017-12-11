@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '../../../node_modules/clarity-angular';
 
 import { BoardComponent } from './component/board.component';
+import { BoardTreeComponent } from './component/board-tree.component';
 import { BoardGridComponent } from './component/board-grid.component';
 import { ArticleGridComponent } from './component/article-grid.component';
 
@@ -19,6 +20,7 @@ import { BoardService } from './service/board.service';
   declarations: [
     BoardComponent,
     BoardGridComponent,
+    BoardTreeComponent,
     ArticleGridComponent
   ],
   providers: [

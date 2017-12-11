@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { BoardService } from '.././service/board.service';
 
@@ -12,6 +12,9 @@ import { Article } from '.././model/article';
 })
 export class ArticleGridComponent implements OnInit {
 
+  @Input()
+  fkBoardInput: string;
+
   searchTitle: string;
 
   articleList: Article[];
@@ -22,7 +25,6 @@ export class ArticleGridComponent implements OnInit {
   }
 
   getArticleList(fkBoard: string) {
-    
     this.boardService.getArticleList(fkBoard)
       .subscribe(
         (model: ResponseList<Article>) => {

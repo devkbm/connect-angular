@@ -9,6 +9,7 @@ import { BoardFormComponent } from '../board/component/board-form.component';
 import { BoardGridComponent } from '../board/component/board-grid.component';
 import { BoardTreeComponent } from '../board/component/board-tree.component';
 import { ArticleGridComponent } from '../board/component/article-grid.component';
+import { BoardComponent } from '../board/component/board.component';
 
 const layoutroutes: Routes = [
   {
@@ -17,7 +18,8 @@ const layoutroutes: Routes = [
       {path: 'test',        component: TestComponent},
       {path: 'test2',       component: Test2Component},
       {path: 'regform',     component: RegisterFormComponent},
-      {path: 'board',       component: BoardFormComponent},
+      {path: 'board',       component: BoardComponent},
+      {path: 'boardForm',   component: BoardFormComponent},
       {path: 'boardTree',   component: BoardTreeComponent},
       {path: 'boardList',   component: BoardGridComponent},
       {path: 'articleList', component: ArticleGridComponent}

@@ -3,7 +3,7 @@
     <div>            
         <label for="search_title" class="required">게시글 제목</label>
         <label for="search_title" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="title.invalid && (title.dirty || title.touched)">                                
-            <input #title="ngModel" [(ngModel)]="searchTitle" [ngModelOptions]="{standalone: true}"   
+            <input #title="ngModel" [(ngModel)]="fkBoardInput" [ngModelOptions]="{standalone: true}"   
                 type="text" 
                 id="search_title" 
                 placeholder="게시글 제목"                 
@@ -16,7 +16,7 @@
         </label>          
     </div>
       Selected Board: <span class="username" *ngIf="selectedArticle">{{selectedArticle.title}}</span>&nbsp;&nbsp;<span>{{searchTitle}}</span>
-      <button class="btn btn-sm btn-secondary" (click)="getArticleList(searchTitle)">조회</button>      
+      <button class="btn btn-sm btn-secondary" (click)="getArticleList(fkBoardInput)">조회</button>      
   </clr-dg-action-bar>
   
   <clr-dg-column [clrDgField]="'pkArticle'">

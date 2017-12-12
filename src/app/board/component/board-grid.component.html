@@ -1,4 +1,4 @@
-<clr-datagrid [(clrDgSingleSelected)]="selectedBoard" [clDgRowSelection]="true">
+<clr-datagrid [(clrDgSingleSelected)]="selectedBoard" [clDgRowSelection]="true" (clrDgSingleSelectedChange)="selectedChanged($event)">
   <clr-dg-action-bar>
       Selected Board: <span class="username" *ngIf="selectedBoard">{{selectedBoard.boardNm}}</span>
       <button class="btn btn-sm btn-secondary" (click)="getBoardList()">조회</button>

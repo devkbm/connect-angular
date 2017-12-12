@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { BoardService } from '.././service/board.service';
 
@@ -12,23 +12,31 @@ import { Board } from '.././model/board';
 })
 export class BoardGridComponent implements OnInit {
 
+  @Output()
+  onSelectedItem = new EventEmitter();
+
   boardList: Board[];
 
   constructor(private boardService: BoardService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   getBoardList() {
     this.boardService.getBoardList()
-      .subscribe(        
-        (model: ResponseList<Board>)=>{
-          if (model.data) 
-            this.boardList = model.data;          
+      .subscribe(
+        (model: ResponseList<Board>) => {
+          if (model.data) {
+            this.boardList = model.data;
+          }
         },
-        (err)=>{},
-        ()=>{}
+        (err) => {},
+        () => {}
     );
+  }
+
+  selectedChanged(event) {
+    console.log(event);
+    this.onSelectedItem.emit(event.pkBoard);
   }
 
 }

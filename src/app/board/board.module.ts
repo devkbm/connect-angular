@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '../../../node_modules/clarity-angular';
 
-import { BoardComponent } from './component/board.component';
+import { BoardFormComponent } from './component/board-form.component';
 import { BoardTreeComponent } from './component/board-tree.component';
 import { BoardGridComponent } from './component/board-grid.component';
 import { ArticleGridComponent } from './component/article-grid.component';
@@ -18,7 +18,7 @@ import { BoardService } from './service/board.service';
     ClarityModule
   ],
   declarations: [
-    BoardComponent,
+    BoardFormComponent,
     BoardGridComponent,
     BoardTreeComponent,
     ArticleGridComponent
@@ -27,7 +27,7 @@ import { BoardService } from './service/board.service';
     BoardService
   ],
   exports: [
-    BoardComponent
+    BoardFormComponent
   ]
 })
 export class BoardModule { }

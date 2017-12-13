@@ -25,6 +25,27 @@ export class RegisterFormComponent implements OnInit {
     this.user = new User();
   }
 
+  private getUser() {
+    this.userService
+      .getUser(this.user.userId)
+      .subscribe(
+        (model: ResponseObject<User>) => {
+          if (model.total > 0) {
+            this.user = model.data;
+          } else {
+            this.user = new User();
+          }
+          this.appAlarmService.changeMessage(model.message);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          console.log('완료');
+        }
+      );
+  }
+
   private registerUser() {
     this.userService
       .registerUser(this.user)

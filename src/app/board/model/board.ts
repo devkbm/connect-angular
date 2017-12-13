@@ -1,9 +1,9 @@
 export class Board {
     pkBoard: number;
     ppkBoard: number;
-    boardType: string;
+    //boardType: string;
     boardNm: string;
-    boardDesc: string;
+    //boardDesc: string;
     fromdDt: string;
     toDt: string;
     useYn: string;

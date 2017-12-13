@@ -28,6 +28,15 @@ export class UserService {
       .catch((err) => Observable.throw(err));
   }
 
+  getUser(id: string): Observable<ResponseObject<User>> {
+    const url = `${this.API_URI}/${id}`;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response;
+      })
+      .catch((err) => Observable.throw(err));
+  }
+
   registerUser(user: User): Observable<ResponseObject<User>> {
     return this.http
       .post(this.API_URI, user)

@@ -1,4 +1,4 @@
-<form>  
+<form #f ngForm>  
     {{board | json}}
     <section class="form-block">
         <label>게시판 등록</label>
@@ -8,7 +8,7 @@
         <div class="form-group">            
             <label for="board_name" class="required" [style.width.px]="100">게시판 명칭</label>
             <label for="board_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="boardNm.invalid && (boardNm.dirty || boardNm.touched)">
-                <input  #boardNm="ngModel" [(ngModel)]="board.boardNm" [ngModelOptions]="{standalone: true}"
+                <input  #boardNm="ngModel" [(ngModel)]="board.boardName" [ngModelOptions]="{standalone: true}"
                   type="text" 
                   id="board_name" 
                   placeholder="게시판 명칭을 입력해주세요." 
@@ -16,7 +16,7 @@
                   required 
                   >
                 <span class="tooltip-content">
-                This field cannot be empty!
+                게시판 명칭은 필수 입력 항목입니다.
                 </span>
             </label>          
         </div>
@@ -26,34 +26,30 @@
                 <input  #boardType="ngModel" [(ngModel)]="board.boardType" [ngModelOptions]="{standalone: true}"
                   type="text" 
                   id="board_type"                   
-                  placeholder="게시판 설명을 입력해주세요." 
+                  placeholder="게시판 타입을 입력해주세요." 
                   [style.width.px]="200"
                   required
                   >
                 <span class="tooltip-content">
-                  This field cannot be empty!
+                게시판 타입은 필수 입력 항목입니다.
                 </span>
             </label>            
-        </div>
+        </div>        
         <div class="form-group">
-            <label for="board_desc" class="required">게시판 설명</label>
-            <label for="board_desc" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="boardDesc.invalid && (boardDesc.dirty || boardDesc.touched)">
-                <input  #boardDesc="ngModel" [(ngModel)]="board.boardDesc" [ngModelOptions]="{standalone: true}"
-                  type="text" 
-                  id="board_desc"                   
-                  placeholder="게시판 설명을 입력해주세요." 
-                  [style.width.px]="200"
-                  required
-                  >
-                <span class="tooltip-content">
-                  This field cannot be empty!
-                </span>
-            </label>            
+            <label for="board_desc">게시판 설명</label>            
+            <textarea #boardDesc="ngModel" [(ngModel)]="board.boardDescription" [ngModelOptions]="{standalone: true}"
+                type="text" 
+                id="board_desc"                   
+                placeholder="게시판 설명을 입력해주세요." 
+                [style.width.px]="200"
+                rows="4"
+                required
+            ></textarea>                              
         </div>
         <div class="form-group">
             <label for="from_date" class="required">시작일자</label>
             <label for="from_date" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="fromDt.invalid && (fromDt.dirty || fromDt.touched)">
-                <input  #fromDt="ngModel" [(ngModel)]="board.fromDt" [ngModelOptions]="{standalone: true}"
+                <input  #fromDt="ngModel" [(ngModel)]="board.fromDate" [ngModelOptions]="{standalone: true}"
                     type="date" 
                     id="from_date"                     
                     placeholder="시작일자를 입력해주세요." 
@@ -61,14 +57,14 @@
                     required
                     >
                 <span class="tooltip-content">
-                This field cannot be empty!
+                    시작일자는 필수 입력 항목입니다.
                 </span>
             </label>            
         </div>
         <div class="form-group">
             <label for="to_date" class="required">종료일자</label>
             <label for="to_date" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="toDt.invalid && (toDt.dirty || toDt.touched)">
-                <input  #toDt="ngModel" [(ngModel)]="board.toDt" [ngModelOptions]="{standalone: true}"
+                <input  #toDt="ngModel" [(ngModel)]="board.toDate" [ngModelOptions]="{standalone: true}"
                     type="date" 
                     id="to_date"                     
                     placeholder="종료일자를 입력해주세요." 
@@ -76,28 +72,20 @@
                     required
                     >
                 <span class="tooltip-content">
-                This field cannot be empty!
+                    종료일자는 필수 입력 항목입니다.
                 </span>
             </label>            
         </div>
         <div class="form-group">
-            <label>사용여부</label>
+            <label class="required">사용여부</label>
             <clr-checkbox
-                name="termsCheckbox"
-                id="checkrads_11"
-                [(ngModel)]="board.useYn">
-                I agree to the terms and conditions.
-            </clr-checkbox>
-            <div>
-                Value of termsAgreement: {{termsAgreement}}
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="cmt">비고</label>
-            <textarea id="cmt" rows="4"></textarea>
-        </div>
+                name="useYnCheckbox" 
+                id="useYn"
+                [(ngModel)]="board.useYn">                
+            </clr-checkbox>            
+        </div>                
         <button class="btn btn-primary" (click)="getBoard()">조회</button>
-        <button class="btn btn-primary" (click)="saveBoard()">등록</button>
+        <button class="btn btn-primary" (click)="saveBoard(f)">등록</button>
         <button class="btn btn-primary" (click)="deleteBoard()">삭제</button>        
   </section>
 </form>

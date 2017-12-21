@@ -1,13 +1,13 @@
 export class Board {
     pkBoard: number;
     ppkBoard: number;
-    //boardType: string;
-    boardNm: string;
-    //boardDesc: string;
-    fromdDt: string;
-    toDt: string;
+    boardType: string;
+    boardName: string;
+    boardDescription: string;
+    fromDate: string;
+    toDate: string;
     useYn: string;
-    articleCnt: number;
-    seq: number;
+    articleCount: number;
+    sequence: number;
     pwdYn: string;
 }

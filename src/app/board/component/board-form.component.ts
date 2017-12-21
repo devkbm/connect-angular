@@ -35,7 +35,8 @@ export class BoardFormComponent implements OnInit {
     );
   }
 
-  private saveBoard() {
+  private saveBoard(f) {
+    console.log(f);
     this.boardService
       .saveBoard(this.board)
       .subscribe(

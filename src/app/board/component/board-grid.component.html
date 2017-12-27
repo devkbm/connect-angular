@@ -14,17 +14,17 @@
           게시판 키
       </ng-container>
   </clr-dg-column>
-  <clr-dg-column [clrDgField]="'boardNm'">게시판명</clr-dg-column>
-  <clr-dg-column [clrDgField]="'boardType'" [style.width.px]="100">타입</clr-dg-column>
-  <clr-dg-column [clrDgField]="'fromDt'"    [style.width.px]="130">시작일자</clr-dg-column>
-  <clr-dg-column [clrDgField]="'toDt'"      [style.width.px]="130">종료일자</clr-dg-column>
+  <clr-dg-column [clrDgField]="'boardName'">게시판명</clr-dg-column>
+  <clr-dg-column [clrDgField]="'boardType'"     [style.width.px]="100">타입</clr-dg-column>
+  <clr-dg-column [clrDgField]="'fromDate'"      [style.width.px]="130">시작일자</clr-dg-column>
+  <clr-dg-column [clrDgField]="'toDate'"        [style.width.px]="130">종료일자</clr-dg-column>
   
   <clr-dg-row *clrDgItems="let board of boardList" [clrDgItem]="board">
       <clr-dg-cell>{{board.pkBoard}}</clr-dg-cell>
-      <clr-dg-cell>{{board.boardNm}}</clr-dg-cell>
+      <clr-dg-cell>{{board.boardName}}</clr-dg-cell>
       <clr-dg-cell>{{board.boardType}}</clr-dg-cell>
-      <clr-dg-cell>{{board.fromDt | date}}</clr-dg-cell>
-      <clr-dg-cell>{{board.toDt | date}}</clr-dg-cell>
+      <clr-dg-cell>{{board.fromDate | date}}</clr-dg-cell>
+      <clr-dg-cell>{{board.toDate | date}}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>

@@ -78,4 +78,24 @@ export class BoardService {
             .catch((err) => Observable.throw(err));
     }
 
+    getArticle(id: number): Observable<ResponseObject<Article>> {
+        const url = `${this.API_URI}/boards/articles/${id}`;
+        return this.http.get(url)
+            .map((response: Response) => {
+                return response;
+            })
+            .catch((err) => Observable.throw(err));
+    }
+
+    saveArticle(article: Article): Observable<ResponseObject<Article>> {
+        const url = `${this.API_URI}/boards/articles/${article.pkArticle}`;
+
+        return this.http
+            .post(url, article)
+            .map((res: Response) => {
+                return res;
+            })
+            .catch((err) => Observable.throw(err));
+    }
+
 }

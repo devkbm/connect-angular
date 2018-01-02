@@ -1,3 +1,5 @@
+import { ArticleCheck } from './article-check';
+
 export class Article {
     pkArticle: number;
     ppkArticle: number;
@@ -9,4 +11,5 @@ export class Article {
     toDt: string;
     seq: number;
     depth: number;
+    articleChecks: ArticleCheck[];
 }

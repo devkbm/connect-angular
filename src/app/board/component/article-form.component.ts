@@ -7,10 +7,10 @@ import { Article } from '.././model/article';
 
 @Component({
   selector: 'app-article-form',
-  templateUrl: './aritcle-form.component.html',
+  templateUrl: './article-form.component.html',
   styles: ['']
 })
-export class BoardFormComponent implements OnInit {
+export class ArticleFormComponent implements OnInit {
 
   article: Article;
 

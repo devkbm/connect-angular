@@ -10,6 +10,7 @@ import { BoardTreeComponent } from './component/board-tree.component';
 import { BoardGridComponent } from './component/board-grid.component';
 import { ArticleGridComponent } from './component/article-grid.component';
 import { BoardComponent } from './component/board.component';
+import { ArticleFormComponent } from './component/article-form.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { BoardComponent } from './component/board.component';
     BoardGridComponent,
     BoardTreeComponent,
     ArticleGridComponent,
+    ArticleFormComponent,
     BoardComponent
   ],
   providers: [

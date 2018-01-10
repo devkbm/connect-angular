@@ -38,11 +38,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private validLogin() {    
-    if (this.checkEmptyField('all') === false )
+  private validLogin() {        
+    if (this.checkEmptyField('all') === false ) {
       return;
+    }
 
-    this.loginService.getLogin(this.userid, this.password).subscribe(
+    // this.loginService.getLogin(this.userid, this.password).subscribe(
+    this.loginService.doLogin(this.userid, this.password).subscribe(
       (model: ResponseObject<User>) => {
         console.log(model);
         this.loginSuccess = model.success;
@@ -50,10 +52,11 @@ export class LoginComponent implements OnInit {
         if (this.loginSuccess) {
           sessionStorage.setItem('userId', this.userid);
 
-          if (this.rememberme)
+          if (this.rememberme) {
             localStorage.setItem('rememberUserId', this.userid);
-          else
+          } else {
             localStorage.removeItem('rememberUserId');
+          }
 
           this.router.navigate(['/home']);
         }

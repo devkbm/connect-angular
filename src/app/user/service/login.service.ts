@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -15,6 +15,7 @@ import { User } from '../model/user-info';
 export class LoginService {
 
   private API_URI = 'http://localhost:8090/user/login';
+  private API_URI2 = 'http://localhost:8090/auth/login';
 
   constructor(private http: HttpClient) {
   }
@@ -29,6 +30,21 @@ export class LoginService {
     return this.http.get(url)
       .map((response: Response) => {
         return response;
+      })
+      .catch((err) => Observable.throw(err));
+  }
+
+  doLogin(id, pwd): Observable<ResponseObject<User>> {
+    // multipart/form-data  application/form-data application/x-www-form-urlencoded
+    const header = new HttpHeaders().set('Content-Type', 'application/form-data');
+    const body = {username: id, password: pwd};
+    /*var formData = new FormData();
+    formData.append('username',id);
+    formData.append('password',pwd);*/
+    return this.http
+      .post(this.API_URI2, body, {headers: header})
+      .map((res: Response) => {
+        return res;
       })
       .catch((err) => Observable.throw(err));
   }

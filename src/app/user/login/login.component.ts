@@ -5,6 +5,7 @@ import { LoginService } from '../service/login.service';
 
 import { ResponseObject } from '../../common-layout/model/response-object';
 import { User } from '../model/user-info';
+import { UserToken } from '../model/user-token';
 
 @Component({
   selector: 'app-login',
@@ -45,9 +46,10 @@ export class LoginComponent implements OnInit {
 
     // this.loginService.getLogin(this.userid, this.password).subscribe(
     this.loginService.doLogin(this.userid, this.password).subscribe(
-      (model: ResponseObject<User>) => {
+      (model: UserToken) => {
         console.log(model);
-        this.loginSuccess = model.success;
+        sessionStorage.setItem('token', model.token);
+        /*this.loginSuccess = model.success;
         this.responseMessage = model.message;
         if (this.loginSuccess) {
           sessionStorage.setItem('userId', this.userid);
@@ -59,14 +61,15 @@ export class LoginComponent implements OnInit {
           }
 
           this.router.navigate(['/home']);
-        }
+        }*/
+        this.router.navigate(['/home']);
       },
       (err) => {
         console.log(err);
         sessionStorage.removeItem('userId');
         localStorage.removeItem('rememberUserId');
       },
-      () => {
+      () => {        
         console.log(this.responseMessage);
       }
     );

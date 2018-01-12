@@ -10,12 +10,15 @@ import 'rxjs/add/observable/throw';
 
 import { ResponseObject } from '../../common-layout/model/response-object';
 import { User } from '../model/user-info';
+import { UserToken } from '../model/user-token';
 
 @Injectable()
 export class LoginService {
 
   private API_URI = 'http://localhost:8090/user/login';
   private API_URI2 = 'http://localhost:8090/auth/login';
+
+  public token;
 
   constructor(private http: HttpClient) {
   }
@@ -34,18 +37,31 @@ export class LoginService {
       .catch((err) => Observable.throw(err));
   }
 
-  doLogin(id, pwd): Observable<ResponseObject<User>> {
+  doLogin(id, pwd): Observable<UserToken> {
     // multipart/form-data  application/form-data application/x-www-form-urlencoded
-    const header = new HttpHeaders().set('Content-Type', 'application/form-data');
+    let header = new HttpHeaders().set('Content-Type', 'application/json');
     const body = {username: id, password: pwd};
-    /*var formData = new FormData();
+    var formData = new FormData();
+    //header.append('Content-Disposition','form-data');
+
     formData.append('username',id);
-    formData.append('password',pwd);*/
+    formData.append('password',pwd);
+
+    var param = new HttpParams();
+    param.append('username',id);
+    param.append('password',pwd);
+
     return this.http
-      .post(this.API_URI2, body, {headers: header})
+      .post(this.API_URI, body, {headers: header})
       .map((res: Response) => {
+        //this.token = res
+        console.log(res);
         return res;
       })
       .catch((err) => Observable.throw(err));
+  }
+
+  setToken(token): void {
+    this.token = token;
   }
 }

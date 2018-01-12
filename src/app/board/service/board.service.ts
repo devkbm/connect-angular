@@ -12,6 +12,7 @@ import { ResponseObject } from '../../common-layout/model/response-object';
 import { ResponseList } from '../../common-layout/model/response-list';
 import { Board } from '../model/board';
 import { Article } from '../model/article';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class BoardService {
@@ -31,7 +32,8 @@ export class BoardService {
 
     getBoard(id: number): Observable<ResponseObject<Board>> {
         const url = `${this.API_URI}/boards/${id}`;
-        return this.http.get(url)
+        let header = new HttpHeaders().set('x-auth-token', sessionStorage.getItem('token'));
+        return this.http.get(url,{headers:header})
             .map((response: Response) => {
                 return response;
             })
@@ -40,9 +42,11 @@ export class BoardService {
 
     saveBoard(board: Board): Observable<ResponseObject<Board>> {
         const url = `${this.API_URI}/boards/${board.pkBoard}`;
-
+        //x-auth-token:d142b686-cee4-49cd-a59f-b25fa5da9d62
+        
+        let header = new HttpHeaders().set('x-auth-token', sessionStorage.getItem('token'));
         return this.http
-            .post(url, board)
+            .post(url, board,{headers:header})
             .map((res: Response) => {
                 return res;
             })

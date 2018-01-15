@@ -17,13 +17,17 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class BoardService {
 
-    private API_URI = 'http://localhost:8090/grw';
+    private API_URI = 'http://localhost:8090/grw';    
 
     constructor(private http: HttpClient) { }
 
+    getHttpHeaders(): HttpHeaders {
+        return new HttpHeaders().set('x-auth-token', sessionStorage.getItem('token'));
+    }
+
     getBoardList(): Observable<ResponseList<Board>> {
         const url = `${this.API_URI}/boards`;
-        return this.http.get(url)
+        return this.http.get(url, {headers: this.getHttpHeaders()})
             .map((response: Response) => {
                 return response;
             })
@@ -32,8 +36,8 @@ export class BoardService {
 
     getBoard(id: number): Observable<ResponseObject<Board>> {
         const url = `${this.API_URI}/boards/${id}`;
-        let header = new HttpHeaders().set('x-auth-token', sessionStorage.getItem('token'));
-        return this.http.get(url,{headers:header})
+        console.log(this.getHttpHeaders());
+        return this.http.get(url, {headers: this.getHttpHeaders()})
             .map((response: Response) => {
                 return response;
             })
@@ -42,11 +46,9 @@ export class BoardService {
 
     saveBoard(board: Board): Observable<ResponseObject<Board>> {
         const url = `${this.API_URI}/boards/${board.pkBoard}`;
-        //x-auth-token:d142b686-cee4-49cd-a59f-b25fa5da9d62
-        
-        let header = new HttpHeaders().set('x-auth-token', sessionStorage.getItem('token'));
+
         return this.http
-            .post(url, board,{headers:header})
+            .post(url, board, {headers: this.getHttpHeaders()})
             .map((res: Response) => {
                 return res;
             })
@@ -57,7 +59,7 @@ export class BoardService {
         const url = `${this.API_URI}/boards/${board.pkBoard}`;
 
         return this.http
-            .delete(url)
+            .delete(url, {headers: this.getHttpHeaders()})
             .map((res: Response) => {
                 return res;
             })
@@ -75,7 +77,7 @@ export class BoardService {
             url = url + '&contents=' + contents;
         }
 
-        return this.http.get(url)
+        return this.http.get(url, {headers: this.getHttpHeaders()})
             .map((response: Response) => {
                 return response;
             })
@@ -84,7 +86,7 @@ export class BoardService {
 
     getArticle(id: number): Observable<ResponseObject<Article>> {
         const url = `${this.API_URI}/boards/articles/${id}`;
-        return this.http.get(url)
+        return this.http.get(url, {headers: this.getHttpHeaders()})
             .map((response: Response) => {
                 return response;
             })
@@ -95,7 +97,7 @@ export class BoardService {
         const url = `${this.API_URI}/boards/articles/${article.pkArticle}`;
 
         return this.http
-            .post(url, article)
+            .post(url, article, {headers: this.getHttpHeaders()})
             .map((res: Response) => {
                 return res;
             })

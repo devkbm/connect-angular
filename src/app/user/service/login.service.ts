@@ -18,10 +18,9 @@ export class LoginService {
   private API_URI = 'http://localhost:8090/user/login';
   private API_URI2 = 'http://localhost:8090/auth/login';
 
-  public token;
-
   constructor(private http: HttpClient) {
   }
+
   /**
    * @description 로그인 한다.
    * @paramTag 사용자 아이디
@@ -59,9 +58,5 @@ export class LoginService {
         return res;
       })
       .catch((err) => Observable.throw(err));
-  }
-
-  setToken(token): void {
-    this.token = token;
   }
 }

@@ -9,6 +9,7 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/throw';
 
 import { ResponseObject } from '../../common-layout/model/response-object';
+import { ResponseList } from '../../common-layout/model/response-list';
 import { User } from '../model/user-info';
 
 @Injectable()
@@ -33,6 +34,15 @@ export class UserService {
 
   getUser(id: string): Observable<ResponseObject<User>> {
     const url = `${this.API_URI}/${id}`;
+    return this.http.get(url, {headers: this.getHttpHeaders()})
+      .map((response: Response) => {
+        return response;
+      })
+      .catch((err) => Observable.throw(err));
+  }
+
+  getUserList(): Observable<ResponseList<User>> {
+    const url = `${this.API_URI}`;
     return this.http.get(url, {headers: this.getHttpHeaders()})
       .map((response: Response) => {
         return response;

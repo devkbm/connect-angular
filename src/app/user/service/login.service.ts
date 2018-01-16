@@ -36,25 +36,19 @@ export class LoginService {
       .catch((err) => Observable.throw(err));
   }
 
-  doLogin(id, pwd): Observable<UserToken> {
-    // multipart/form-data  application/form-data application/x-www-form-urlencoded
-    let header = new HttpHeaders().set('Content-Type', 'application/json');
+  /**
+   * @description 로그인 한다.
+   * @paramTag 아이디
+   * @paramTag 비밀번호
+   * @returnType {UserToken} Token 정보
+   */
+  doLogin(id: string, pwd: string): Observable<UserToken> {
+    const header = new HttpHeaders().set('Content-Type', 'application/json');
     const body = {username: id, password: pwd};
-    var formData = new FormData();
-    //header.append('Content-Disposition','form-data');
-
-    formData.append('username',id);
-    formData.append('password',pwd);
-
-    var param = new HttpParams();
-    param.append('username',id);
-    param.append('password',pwd);
 
     return this.http
       .post(this.API_URI, body, {headers: header})
       .map((res: Response) => {
-        //this.token = res
-        console.log(res);
         return res;
       })
       .catch((err) => Observable.throw(err));

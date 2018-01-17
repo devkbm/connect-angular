@@ -2,6 +2,6 @@ export class User {
     userId: string;
     password: string;
     name: string;
-    isEnabled: boolean;
+    enabled: boolean;
     authorities: string[];
 }

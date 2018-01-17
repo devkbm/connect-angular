@@ -20,7 +20,7 @@ export class UserGridComponent implements OnInit {
   ngOnInit() {
   }
 
-  getArticleList(fkBoard: string) {
+  getArticleList() {
     this.userService.getUserList()
       .subscribe(
         (model: ResponseList<User>) => {

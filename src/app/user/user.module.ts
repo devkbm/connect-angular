@@ -10,6 +10,7 @@ import { LoginService } from './service/login.service';
 import { AuthcheckRoutingService } from './login/authcheck-routing.service';
 import { UserService } from './service/user.service';
 import { AppAlarmService } from '../common-layout/app-alarm.service';
+import { UserGridComponent } from './component/user-grid.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppAlarmService } from '../common-layout/app-alarm.service';
   ],
   declarations: [
     LoginComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    UserGridComponent
   ],
   providers: [
     LoginService,

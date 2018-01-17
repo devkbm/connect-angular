@@ -1,7 +1,7 @@
-<clr-datagrid [(clrDgSingleSelected)]="selectedArticle" [clDgRowSelection]="true">
+<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clDgRowSelection]="true">
   <clr-dg-action-bar>
     <div>            
-        <label for="search_title" class="required">게시글 제목</label>
+        <label for="search_title" class="required">검색</label>
         <label for="search_title" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="title.invalid && (title.dirty || title.touched)">                                
             <input #title="ngModel" [(ngModel)]="fkBoardInput" [ngModelOptions]="{standalone: true}"   
                 type="text" 
@@ -15,29 +15,25 @@
             </span>
         </label>          
     </div>
-      Selected Board: <span class="username" *ngIf="selectedArticle">{{selectedArticle.title}}</span>&nbsp;&nbsp;<span>{{searchTitle}}</span>
-      <button class="btn btn-sm btn-secondary" (click)="getArticleList(fkBoardInput)">조회</button>      
+      <span class="username" *ngIf="selectedUser">{{selectedUser.userId}}</span>&nbsp;&nbsp;<span>{{searchTitle}}</span>
+      <button class="btn btn-sm btn-secondary" (click)="getArticleList()">조회</button>      
   </clr-dg-action-bar>
   
-  <clr-dg-column [clrDgField]="'pkArticle'">
-      <ng-container *clrDgHideableColumn="{hidden:true}">
-          게시글 키
-      </ng-container>
-  </clr-dg-column>
-  <clr-dg-column [clrDgField]="'title'">게시글</clr-dg-column>  
-  <clr-dg-column [clrDgField]="'fromDt'"    [style.width.px]="130">시작일자</clr-dg-column>
-  <clr-dg-column [clrDgField]="'toDt'"      [style.width.px]="130">종료일자</clr-dg-column>
+  <clr-dg-column [clrDgField]="'userId'"    [style.width.px]="130">사용자 아이디</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'"      [style.width.px]="130">성명</clr-dg-column>
+  <clr-dg-column [clrDgField]="'password'"  [style.width.px]="130">비밀번호</clr-dg-column>    
+  <clr-dg-column [clrDgField]="'enabled'"   [style.width.px]="130">사용여부</clr-dg-column>  
   
-  <clr-dg-row *clrDgItems="let article of articleList" [clrDgItem]="article">
-      <clr-dg-cell>{{article.pkArticle}}</clr-dg-cell>
-      <clr-dg-cell>{{article.title}}</clr-dg-cell>      
-      <clr-dg-cell>{{article.fromDt | date}}</clr-dg-cell>
-      <clr-dg-cell>{{article.toDt | date}}</clr-dg-cell>
+  <clr-dg-row *clrDgItems="let user of userList" [clrDgItem]="user">
+      <clr-dg-cell>{{user.userId}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.password}}</clr-dg-cell>            
+      <clr-dg-cell><input type="checkbox" name="enabled" [(ngModel)]="user.enabled"></clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-      of {{pagination.totalItems}} boards
+      of {{pagination.totalItems}} users
       <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>              
   </clr-dg-footer>      
 </clr-datagrid>

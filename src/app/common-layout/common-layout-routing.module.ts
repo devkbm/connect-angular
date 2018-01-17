@@ -11,6 +11,7 @@ import { BoardTreeComponent } from '../board/component/board-tree.component';
 import { ArticleGridComponent } from '../board/component/article-grid.component';
 import { BoardComponent } from '../board/component/board.component';
 import { ArticleFormComponent } from '../board/component/article-form.component';
+import { UserGridComponent } from '../user/component/user-grid.component';
 
 const layoutroutes: Routes = [
   {
@@ -19,6 +20,7 @@ const layoutroutes: Routes = [
       {path: 'test',        component: TestComponent},
       {path: 'test2',       component: Test2Component},
       {path: 'regform',     component: RegisterFormComponent},
+      {path: 'userList',    component: UserGridComponent},
       {path: 'board',       component: BoardComponent},
       {path: 'boardForm',   component: BoardFormComponent},
       {path: 'boardTree',   component: BoardTreeComponent},

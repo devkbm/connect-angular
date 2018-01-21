@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '../../../node_modules/clarity-angular';
 
 import { LoginComponent } from './login/login.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { UserFormComponent } from './component/user-form.component';
+import { UserGridComponent } from './component/user-grid.component';
 
 import { LoginService } from './service/login.service';
 import { AuthcheckRoutingService } from './login/authcheck-routing.service';
 import { UserService } from './service/user.service';
 import { AppAlarmService } from '../common-layout/app-alarm.service';
-import { UserGridComponent } from './component/user-grid.component';
+
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { UserGridComponent } from './component/user-grid.component';
   ],
   declarations: [
     LoginComponent,
-    RegisterFormComponent,
+    UserFormComponent,
     UserGridComponent
   ],
   providers: [

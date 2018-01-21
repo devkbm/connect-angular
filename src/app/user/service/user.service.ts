@@ -11,6 +11,7 @@ import 'rxjs/add/observable/throw';
 import { ResponseObject } from '../../common-layout/model/response-object';
 import { ResponseList } from '../../common-layout/model/response-list';
 import { User } from '../model/user-info';
+import { Authority } from '../model/authority-info';
 
 @Injectable()
 export class UserService {
@@ -66,5 +67,14 @@ export class UserService {
       return res;
     })
     .catch((err) => Observable.throw(err));
+  }
+
+  getAuthorityList(): Observable<ResponseList<Authority>> {
+    const url = `http://localhost:8090/authority`;
+    return this.http.get(url, {headers: this.getHttpHeaders()})
+      .map((response: Response) => {
+        return response;
+      })
+      .catch((err) => Observable.throw(err));
   }
 }

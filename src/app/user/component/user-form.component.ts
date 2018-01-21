@@ -8,11 +8,11 @@ import { User } from '../model/user-info';
 
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css']
+  selector: 'app-user-form',
+  templateUrl: './user-form.component.html',
+  styles: ['']
 })
-export class RegisterFormComponent implements OnInit {
+export class UserFormComponent implements OnInit {
 
   private user: User;
 

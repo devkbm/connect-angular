@@ -18,6 +18,8 @@ export class UserService {
 
   private API_URI = 'http://localhost:8090/user';
 
+  private API_URI2 = 'http://localhost:8090/authority';
+
   constructor(private http: HttpClient) { }
 
   getHttpHeaders(): HttpHeaders {
@@ -71,6 +73,15 @@ export class UserService {
 
   getAuthorityList(): Observable<ResponseList<Authority>> {
     const url = `http://localhost:8090/authority`;
+    return this.http.get(url, {headers: this.getHttpHeaders()})
+      .map((response: Response) => {
+        return response;
+      })
+      .catch((err) => Observable.throw(err));
+  }
+
+  getAuthority(id: string): Observable<ResponseObject<Authority>> {
+    const url = `${this.API_URI2}/${id}`;
     return this.http.get(url, {headers: this.getHttpHeaders()})
       .map((response: Response) => {
         return response;

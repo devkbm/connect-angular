@@ -16,15 +16,15 @@
         </label>          
     </div>
       <span class="username" *ngIf="selectedAuthority">{{selectedAuthority.userId}}</span>&nbsp;&nbsp;<span>{{searchTitle}}</span>
-      <button class="btn btn-sm btn-secondary" (click)="getArticleList()">조회</button>      
+      <button class="btn btn-sm btn-secondary" (click)="getAuthorityList()">조회</button>      
   </clr-dg-action-bar>
   
-  <clr-dg-column [clrDgField]="'authorityName'"    [style.width.px]="130">사용자 아이디</clr-dg-column>
-  <clr-dg-column [clrDgField]="'description'"      [style.width.px]="130">성명</clr-dg-column>
+  <clr-dg-column [clrDgField]="'authority'"    [style.width.px]="130">권한</clr-dg-column>
+  <clr-dg-column [clrDgField]="'description'"      [style.width.px]="130">설명</clr-dg-column>
     
-  <clr-dg-row *clrDgItems="let user of userList" [clrDgItem]="user">
-      <clr-dg-cell>{{user.authorityName}}</clr-dg-cell>
-      <clr-dg-cell>{{user.description}}</clr-dg-cell>  
+  <clr-dg-row *clrDgItems="let auth of authorityList" [clrDgItem]="auth">
+      <clr-dg-cell>{{auth.authority}}</clr-dg-cell>
+      <clr-dg-cell>{{auth.description}}</clr-dg-cell>  
   </clr-dg-row>
 
   <clr-dg-footer>

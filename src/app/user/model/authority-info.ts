@@ -1,4 +1,4 @@
 export class Authority {
-    authorityName: string;
+    authority: string;
     description: string;
 }

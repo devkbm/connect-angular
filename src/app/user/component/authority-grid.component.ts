@@ -20,7 +20,7 @@ export class AuthorityGridComponent implements OnInit {
   ngOnInit() {
   }
 
-  getArticleList() {
+  getAuthorityList() {
     this.userService.getAuthorityList()
       .subscribe(
         (model: ResponseList<Authority>) => {

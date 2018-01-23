@@ -72,7 +72,7 @@ export class UserService {
   }
 
   getAuthorityList(): Observable<ResponseList<Authority>> {
-    const url = `http://localhost:8090/authority`;
+    const url = `${this.API_URI2}`;
     return this.http.get(url, {headers: this.getHttpHeaders()})
       .map((response: Response) => {
         return response;
@@ -85,6 +85,15 @@ export class UserService {
     return this.http.get(url, {headers: this.getHttpHeaders()})
       .map((response: Response) => {
         return response;
+      })
+      .catch((err) => Observable.throw(err));
+  }
+
+  registerAuthority(authority: Authority): Observable<ResponseObject<Authority>> {
+    return this.http
+      .post(this.API_URI2, authority, {headers: this.getHttpHeaders()})
+      .map((res: Response) => {
+        return res;
       })
       .catch((err) => Observable.throw(err));
   }

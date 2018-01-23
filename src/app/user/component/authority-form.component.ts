@@ -24,17 +24,33 @@ export class AuthorityFormComponent implements OnInit {
     this.auth = new Authority();
   }
 
-  private getUser() {
+  private getAuthority() {
     this.userService
-      .getUser(this.user.userId)
+      .getAuthority(this.auth.authority)
       .subscribe(
-        (model: ResponseObject<User>) => {
+        (model: ResponseObject<Authority>) => {
           if (model.total > 0) {
-            this.user = model.data;
+            this.auth = model.data;
           } else {
-            this.user = new User();
+            this.auth = new Authority();
           }
           this.appAlarmService.changeMessage(model.message);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          console.log('완료');
+        }
+      );
+  }
+
+  private registerAuthority() {
+    this.userService
+      .registerAuthority(this.auth)
+      .subscribe(
+        (model: ResponseObject<Authority>) => {
+          console.log(model);
         },
         (err) => {
           console.log(err);

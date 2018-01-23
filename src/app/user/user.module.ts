@@ -12,8 +12,7 @@ import { AuthcheckRoutingService } from './login/authcheck-routing.service';
 import { UserService } from './service/user.service';
 import { AppAlarmService } from '../common-layout/app-alarm.service';
 import { AuthorityGridComponent } from './component/authority-grid.component';
-
-
+import { AuthorityFormComponent } from './component/authority-form.component';
 
 @NgModule({
   imports: [
@@ -25,7 +24,8 @@ import { AuthorityGridComponent } from './component/authority-grid.component';
     LoginComponent,
     UserFormComponent,
     UserGridComponent,
-    AuthorityGridComponent
+    AuthorityGridComponent,
+    AuthorityFormComponent
   ],
   providers: [
     LoginService,

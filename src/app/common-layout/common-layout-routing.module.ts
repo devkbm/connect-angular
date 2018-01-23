@@ -13,6 +13,7 @@ import { ArticleGridComponent } from '../board/component/article-grid.component'
 import { BoardComponent } from '../board/component/board.component';
 import { ArticleFormComponent } from '../board/component/article-form.component';
 import { AuthorityGridComponent } from '../user/component/authority-grid.component';
+import { AuthorityFormComponent } from '../user/component/authority-form.component';
 
 const layoutroutes: Routes = [
   {
@@ -23,6 +24,7 @@ const layoutroutes: Routes = [
       {path: 'regform',     component: UserFormComponent},
       {path: 'userList',    component: UserGridComponent},
       {path: 'authList',    component: AuthorityGridComponent},
+      {path: 'authForm',    component: AuthorityFormComponent},
       {path: 'board',       component: BoardComponent},
       {path: 'boardForm',   component: BoardFormComponent},
       {path: 'boardTree',   component: BoardTreeComponent},

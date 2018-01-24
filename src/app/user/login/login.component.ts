@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('token');
         localStorage.removeItem('rememberUserId');
       },
       () => {        

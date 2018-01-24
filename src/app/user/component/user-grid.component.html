@@ -6,7 +6,7 @@
             <input #title="ngModel" [(ngModel)]="fkBoardInput" [ngModelOptions]="{standalone: true}"   
                 type="text" 
                 id="search_title" 
-                placeholder="게시글 제목"                 
+                placeholder="사용자 아이디 또는 사용자명"                 
                 size="10"
                 required 
                 >
@@ -20,16 +20,18 @@
   </clr-dg-action-bar>
   
   <clr-dg-column [clrDgField]="'userId'"    [style.width.px]="130">사용자 아이디</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'"      [style.width.px]="130">성명</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">성명</clr-dg-column>
   <clr-dg-column [clrDgField]="'password'"  [style.width.px]="130">비밀번호</clr-dg-column>    
   <clr-dg-column [clrDgField]="'enabled'"   [style.width.px]="130">사용여부</clr-dg-column>  
+  <clr-dg-column [clrDgField]="'enabled'"   [style.width.px]="130">Action</clr-dg-column>  
   
   <clr-dg-row *clrDgItems="let user of userList" [clrDgItem]="user">
-      <clr-dg-cell>{{user.userId}}</clr-dg-cell>
-      <clr-dg-cell>{{user.name}}</clr-dg-cell>
-      <clr-dg-cell>{{user.password}}</clr-dg-cell>            
-      <clr-dg-cell><input type="checkbox" name="enabled" [(ngModel)]="user.enabled"></clr-dg-cell>
-  </clr-dg-row>
+        <clr-dg-cell>{{user.userId}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.password}}</clr-dg-cell>
+        <clr-dg-cell><input type="checkbox" name="enabled" [(ngModel)]="user.enabled"></clr-dg-cell>
+        <clr-dg-cell><button class="btn btn-danger">초기화</button></clr-dg-cell>
+    </clr-dg-row>
 
   <clr-dg-footer>
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}

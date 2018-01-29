@@ -13,6 +13,7 @@ import { UserService } from './service/user.service';
 import { AppAlarmService } from '../common-layout/app-alarm.service';
 import { AuthorityGridComponent } from './component/authority-grid.component';
 import { AuthorityFormComponent } from './component/authority-form.component';
+import { AuthoritySelectboxesComponent } from './component/authority-selectboxes.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { AuthorityFormComponent } from './component/authority-form.component';
     UserFormComponent,
     UserGridComponent,
     AuthorityGridComponent,
-    AuthorityFormComponent
+    AuthorityFormComponent,
+    AuthoritySelectboxesComponent
   ],
   providers: [
     LoginService,

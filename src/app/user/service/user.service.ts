@@ -27,7 +27,7 @@ export class UserService {
   }
 
   checkUser(id: string): Observable<ResponseObject<User>> {
-    const url = `${this.API_URI}/check/${id}`;
+    const url = `${this.API_URI}/${id}/check`;
     return this.http.get(url, {headers: this.getHttpHeaders()})
       .map((response: Response) => {
         return response;
@@ -55,7 +55,7 @@ export class UserService {
 
   registerUser(user: User): Observable<ResponseObject<User>> {
     return this.http
-      .post(this.API_URI, user, {headers: this.getHttpHeaders()})
+      .post(this.API_URI + '/' + user.userId, user, {headers: this.getHttpHeaders()})
       .map((res: Response) => {
         return res;
       })
@@ -69,6 +69,15 @@ export class UserService {
       return res;
     })
     .catch((err) => Observable.throw(err));
+  }
+
+  initializePassword(user: User): Observable<ResponseObject<String>> {
+    return this.http
+      .post(this.API_URI+ '/' + user.userId + '/initPassword', user, {headers: this.getHttpHeaders()})
+      .map((res: Response) => {
+        return res;
+      })
+      .catch((err) => Observable.throw(err));
   }
 
   getAuthorityList(): Observable<ResponseList<Authority>> {

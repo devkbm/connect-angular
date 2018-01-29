@@ -23,14 +23,14 @@
   <clr-dg-column [clrDgField]="'name'">성명</clr-dg-column>
   <clr-dg-column [clrDgField]="'password'"  [style.width.px]="130">비밀번호</clr-dg-column>    
   <clr-dg-column [clrDgField]="'enabled'"   [style.width.px]="130">사용여부</clr-dg-column>  
-  <clr-dg-column [clrDgField]="'enabled'"   [style.width.px]="130">Action</clr-dg-column>  
+  <clr-dg-column                            [style.width.px]="130">Action</clr-dg-column>  
   
   <clr-dg-row *clrDgItems="let user of userList" [clrDgItem]="user">
         <clr-dg-cell>{{user.userId}}</clr-dg-cell>
         <clr-dg-cell>{{user.name}}</clr-dg-cell>
         <clr-dg-cell>{{user.password}}</clr-dg-cell>
         <clr-dg-cell><input type="checkbox" name="enabled" [(ngModel)]="user.enabled"></clr-dg-cell>
-        <clr-dg-cell><button class="btn btn-danger">초기화</button></clr-dg-cell>
+        <clr-dg-cell><button class="btn btn-primary" (click)="initPassword(selectedUser)">비밀번호 초기화</button></clr-dg-cell>
     </clr-dg-row>
 
   <clr-dg-footer>

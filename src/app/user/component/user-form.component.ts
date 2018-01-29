@@ -6,6 +6,7 @@ import { AppAlarmService } from '../../common-layout/app-alarm.service';
 import { ResponseObject } from '../../common-layout/model/response-object';
 import { User } from '../model/user-info';
 
+import { AuthoritySelectboxesComponent } from './authority-selectboxes.component';
 
 @Component({
   selector: 'app-user-form',
@@ -15,6 +16,7 @@ import { User } from '../model/user-info';
 export class UserFormComponent implements OnInit {
 
   private user: User;
+  private isValidPassword: boolean;
 
   @Output() messageChanged: EventEmitter<string> = new EventEmitter();
 
@@ -95,4 +97,13 @@ export class UserFormComponent implements OnInit {
         }
       );
   }
+
+  private validPassword(checkPassword: String) {
+    if ( this.user.password === checkPassword ) {
+      this.isValidPassword = true;
+    } else {
+      this.isValidPassword = false;
+    }
+  }
+
 }

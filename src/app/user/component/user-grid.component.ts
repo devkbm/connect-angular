@@ -4,6 +4,7 @@ import { UserService } from '.././service/user.service';
 
 import { ResponseList } from '../../common-layout/model/response-list';
 import { User } from '.././model/user-info';
+import { ResponseObject } from '../../common-layout/model/response-object';
 
 @Component({
   selector: 'app-user-grid',
@@ -31,6 +32,22 @@ export class UserGridComponent implements OnInit {
         (err) => {},
         () => {}
     );
+  }
+
+  private initPassword(user : User) {
+    this.userService
+      .initializePassword(user)
+      .subscribe(
+        (model: ResponseObject<String>) => {
+          console.log(model);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          console.log('완료');
+        }
+      );
   }
 
 }

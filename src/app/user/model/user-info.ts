@@ -3,5 +3,5 @@ export class User {
     password: string;
     name: string;
     enabled: boolean;
-    authorities: string[];
+    authorityList: string[];
 }

@@ -16,7 +16,10 @@ import { AuthoritySelectboxesComponent } from './authority-selectboxes.component
 export class UserFormComponent implements OnInit {
 
   private user: User;
+  private passwordConfirm: String;
   private isValidPassword: boolean;
+  private isPasswordEmpty: boolean;
+  private isPasswordConfirmEmpty: boolean;
 
   @Output() messageChanged: EventEmitter<string> = new EventEmitter();
 
@@ -41,6 +44,7 @@ export class UserFormComponent implements OnInit {
         },
         (err) => {
           console.log(err);
+          this.user = new User();
         },
         () => {
           console.log('완료');
@@ -49,6 +53,10 @@ export class UserFormComponent implements OnInit {
   }
 
   private registerUser() {
+    if ( this.isValidPassword !== true ) {
+      return;
+    }
+
     this.userService
       .registerUser(this.user)
       .subscribe(
@@ -81,7 +89,6 @@ export class UserFormComponent implements OnInit {
   }
 
   private checkUser() {
-    this.messageChanged.emit('test');
     this.userService
       .checkUser(this.user.userId)
       .subscribe(
@@ -99,11 +106,15 @@ export class UserFormComponent implements OnInit {
   }
 
   private validPassword(checkPassword: String) {
-    if ( this.user.password === checkPassword ) {
-      this.isValidPassword = true;
-    } else {
-      this.isValidPassword = false;
-    }
+    this.user.password === checkPassword ? this.isValidPassword = true : this.isValidPassword = false;
+  }
+
+  private checkEmptyPassword() {
+    this.user.password === '' ? this.isPasswordEmpty = true : this.isPasswordEmpty = false;
+  }
+
+  private checkEmptyPasswordConfirm() {
+    this.passwordConfirm === '' ? this.isPasswordConfirmEmpty = true : this.isPasswordConfirmEmpty = false;
   }
 
 }
